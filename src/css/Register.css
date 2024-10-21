@@ -1,0 +1,99 @@
+.container {
+    background-color: #d3d3d3;
+}
+  
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 800px;
+    padding: 100px;
+}
+
+@media screen and (max-width: 768px) {
+    .card {
+        width: 90%;
+        padding: 50px;
+    }
+    
+}
+
+@media screen and (max-width: 480px) {
+    .card {
+        width: 95%;
+        padding: 20px;
+    }
+    
+}
+  
+h3 {
+    color: #000000;
+}
+  
+.btn {
+    background-color: #ff4f81;
+    color: white;
+}
+
+.btn:hover {
+    background-color: #ff205f;
+    color: white;
+}
+
+input{  
+    height: 50px;   
+}
+
+.register{
+    font-family: Arial, sans-serif;
+}
+
+.login{
+    color: #ff4f81;
+    text-decoration: none;
+}
+
+
+
+
+/* Input Container */
+.input-container {
+    position: relative;
+    margin-top: 20px;
+}
+  
+.input-container input {
+    width: 100%;
+    padding: 12px;
+    padding-top: 20px; 
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+  
+.input-container label {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    font-size: 14px;
+    color: gray;
+    background-color: white;
+    padding: 0 5px;
+    transition: 0.3s;
+    pointer-events: none;
+}
+  
+.input-container input:focus + label,
+.input-container input:not(:placeholder-shown) + label {
+    top: -10px;
+    left: 8px;
+    font-size: 12px;
+    color: #000000;
+}
+  
+.input-container input::placeholder {
+    color: transparent;
+}
+/* Input Container */
+  
