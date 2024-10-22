@@ -53,11 +53,14 @@ input{
     text-decoration: none;
 }
 
-
+.form-label{
+    margin-left: 10px;
+    color: gray;
+}
 
 
 /* Input Container */
-.input-container {
+/* .input-container {
     position: relative;
     margin-top: 20px;
 }
@@ -94,6 +97,6 @@ input{
   
 .input-container input::placeholder {
     color: transparent;
-}
+} */
 /* Input Container */
   

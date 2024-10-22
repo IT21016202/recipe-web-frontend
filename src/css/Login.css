@@ -1,0 +1,67 @@
+.container {
+    background-color: #d3d3d3;
+}
+  
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    padding: 100px;
+}
+
+@media screen and (max-width: 768px) {
+    .card {
+        width: 90%;
+        padding: 50px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .card {
+        width: 95%;
+        padding: 20px;
+    } 
+}
+  
+h3 {
+    color: #000000;
+}
+  
+.btn {
+    background-color: #ff4f81;
+    color: white;
+}
+
+.btn:hover {
+    background-color: #ff205f;
+    color: white;
+}
+
+input{  
+    height: 50px;   
+}
+
+.login{
+    font-family: Arial, sans-serif;
+    color: #000000;
+}
+
+.register{
+    color: #ff4f81;
+    text-decoration: none;
+}
+
+.form-label{
+    margin-left: 10px;
+    color: gray;
+}
+
+.dont{
+    font-size: 10px;
+}
+
+.invalid-feedback{
+    color: red;
+    font-size: 12px;
+}

@@ -52,76 +52,88 @@ const Register = () => {
         <form onSubmit={handleSubmit}>
 
           <div className='row'>
-            <div className="form-group mb-3 col-md-6">
+            <div className="form-floating mb-3 col-md-6">
               <input 
                 type="text" 
                 name="firstName" 
+                id="floatingInput"
                 className="form-control" 
                 placeholder="First name" 
                 value={formData.firstName}
                 onChange={handleChange}
                 required 
               />
+              <label for="floatingInput" className='form-label'>First Name</label>
             </div>
-            <div className="form-group mb-3 col-md-6">
+            <div className="form-floating mb-3 col-md-6">
               <input 
                 type="text" 
                 name="lastName" 
+                id="floatingInput"
                 className="form-control" 
                 placeholder="Last name"
                 value={formData.lastName}
                 onChange={handleChange}
               />
+              <label for="floatingInput" className='form-label'>Last Name</label>
             </div>
           </div>
           
           <div className='row'>
-            <div className="form-group mb-3 col-md-6">
+            <div className="form-floating mb-3 col-md-6">
               <input 
                 type="email" 
                 name="email" 
+                id="floatingInput"
                 className="form-control" 
                 placeholder="abc@gmail.com" 
                 value={formData.email}
                 onChange={handleChange}
                 required 
               />
+              <label for="floatingInput" className='form-label'>Email</label>
             </div>
-            <div className="form-group mb-3 col-md-6">
+            <div className="form-floating mb-3 col-md-6">
               <input 
                 type="text" 
                 name="phoneNumber" 
+                id="floatingInput"
                 className="form-control" 
                 placeholder="011 2222 333"
                 value={formData.phoneNumber}
                 onChange={handleChange}
                 required 
               />
+              <label for="floatingInput" className='form-label'>Phone Number</label>
             </div>
           </div>
 
           <div className='row'>
-            <div className="form-group mb-3 col-md-6">
+            <div className="form-floating mb-3 col-md-6">
               <input 
                 type="password" 
                 name="password" 
+                id="floatingInput"
                 className="form-control" 
                 placeholder="Password" 
                 value={formData.password}
                 onChange={handleChange}
                 required 
               />
+              <label for="floatingInput" className='form-label'>Password</label>
             </div>
-            <div className="form-group mb-3 col-md-6">
+            <div className="form-floating mb-3 col-md-6">
               <input 
                 type="password" 
                 name="confirmPassword" 
+                id="floatingInput"
                 className={`form-control ${passwordMatchError ? 'is-invalid' : ''}`}
                 placeholder="Confirm Password" 
                 value={formData.confirmPassword}
                 onChange={handleChange}
                 required 
               />
+              <label for="floatingInput" className='form-label'>Confirm Password</label>
               {passwordMatchError && <div className="invalid-feedback">The password does not match</div>}
             </div>
           </div>
