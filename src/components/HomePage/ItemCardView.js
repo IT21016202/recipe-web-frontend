@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'; 
+import { useLocation, useNavigate } from 'react-router-dom'; 
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
@@ -8,11 +8,16 @@ import ViewRecipeModal from './ViewRecipeModal';
 const ItemCardView = () => {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
-    const category = queryParams.get('cat');
+    let category = queryParams.get('cat');
     const [recipes, setRecipes] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [selectedRecipe, setSelectedRecipe] = useState(null);
     const BASE_URL = process.env.REACT_APP_BASE_URL;
+    const navigate = useNavigate();
+
+    if (!category) {
+        navigate('/home?cat=Beef');
+    }
 
     useEffect(() => {
         getRecipes();
@@ -28,7 +33,6 @@ const ItemCardView = () => {
         });
     }
     
-
     const handleViewRevipe = (id) => {
         setSelectedRecipe(id);
         setShowModal(true);
