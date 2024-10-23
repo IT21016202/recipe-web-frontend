@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import '../css/Login.css';
+import '../css/styles.css';
 import Logo from '../images/recipe_logo.png';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const Login = () => {
     const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -11,8 +14,17 @@ const Login = () => {
         email: '',
         password: '',
     });
+    const { user, login } = useAuth();
+    const navigate = useNavigate();
 
     const [loginError, setLoginError] = useState(false);
+
+    useEffect(() => {
+        if(user){
+            navigate('/home');
+        }
+    }, [user, navigate]);
+
 
     const handleChange = (e) => {
         setFormData({
@@ -27,11 +39,12 @@ const Login = () => {
         axios.post(BASE_URL+'/api/auth/login', formData)
         .then(response => {
             setLoginError(false);
-            console.log('Form data submitted:', response.data);
+            login(response.data.token); 
+            navigate('/home');
         })
         .catch(error => {
             console.error('There was an error!', error.response.status);
-            if(error.response.status == 400){
+            if(error.response.status === 400){
                 setLoginError(true);
             }
         });
@@ -40,7 +53,7 @@ const Login = () => {
 
     return (
         <div className="d-flex justify-content-center align-items-center vh-100">
-            <div className="card">
+            <div className="login-card">
                 <div className='text-center'>
                     <img src={Logo} alt="Logo" style={{width: '150px'}}/>
                 </div>
@@ -87,7 +100,7 @@ const Login = () => {
                 )}
                 
                 <div className="text-center mt-5 dont">
-                    Don't have an account? <a href="/login" className='register'>Create an account</a>
+                    Don't have an account? <Link className='register' to="/register"><b>Create an account</b></Link>
                 </div>
             </div>
         </div>

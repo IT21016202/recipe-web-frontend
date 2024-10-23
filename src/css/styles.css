@@ -1,0 +1,159 @@
+.container {
+    /* background-color: #d3d3d3; */
+}
+  
+.login-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    padding: 80px;
+}
+
+.register-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 800px;
+    padding: 80px;
+}
+
+@media screen and (max-width: 768px) {
+    .login-card {
+        width: 90%;
+        padding: 50px;
+    }
+    .register-card {
+        width: 90%;
+        padding: 50px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .login-card {
+        width: 95%;
+        padding: 20px;
+    } 
+}
+  
+h3 {
+    color: #000000;
+}
+  
+.btn {
+    background-color: #ff4f81;
+    color: white;
+    border: none;
+}
+
+.btn:hover {
+    background-color: #ff0048;
+    color: white;
+}
+
+input{  
+    height: 50px;   
+}
+
+.login{
+    font-family: Arial, sans-serif;
+    color: #000000;
+}
+
+.register{
+    color: #ff4f81;
+    text-decoration: none;
+}
+
+.register-topic{
+    font-family: Arial, sans-serif;
+}
+
+.already{
+    font-size: 14px;
+}
+
+.registr-login{
+    color: #ff4f81;
+    text-decoration: none; 
+    font-size: 14px;
+}
+
+.form-label{
+    margin-left: 10px;
+    color: gray;
+}
+
+.dont{
+    font-size: 12px;
+}
+
+.invalid-feedback{
+    color: red;
+    font-size: 12px;
+}
+
+/* Nav Bar */
+.nav-logo{
+    width: 100px;
+    margin-right: 25px;
+}
+
+.btn-signout{
+    border: none;
+}
+
+/* Recipe Category Nav */
+.btn-category{
+    background-color: white;
+    color: #ff4f81;
+    border-radius: 20px;
+    padding: 10px 30px;
+    border: solid 1px #ff4f81;
+    transition-duration: 0.3s;
+}
+
+.btn-category-active{
+    background-color: #ff4f81;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 10px 30px;
+    border: solid 1px #ff4f81;
+    transition-duration: 0.3s;
+}
+
+.btn-category:hover{
+    background-color: #ff4f81;
+    color: white;
+}
+
+/* Recipe Card */
+.recipe-card{
+    border: none;
+}
+
+.recipe-card:hover{
+    transform: scale(1.02);
+    transition-duration: 0.2s;
+}
+
+.card-img-top{
+    border-radius: 50px;
+}
+
+.recipe-card-a{
+    text-decoration: none;
+    color: black;
+}
+
+.recipe-description{
+    color: gray;
+    text-align: justify;
+    font-size: 14px;
+}
+
+
+/* Favorite Page */
+.fav-topic{
+
+}

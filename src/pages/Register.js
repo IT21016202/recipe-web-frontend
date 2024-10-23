@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import '../css/Register.css';
+import '../css/styles.css';
 import Logo from '../images/recipe_logo.png';
 import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const Register = () => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
+  const navigate = useNavigate();
+  const { login } = useAuth();
   
   const [formData, setFormData] = useState({
     firstName: '',
@@ -34,7 +38,8 @@ const Register = () => {
 
       axios.post(BASE_URL+'/api/auth/register', formData)
         .then(response => {
-          console.log('Form data submitted:', response.data);
+          login(response.data.token); 
+          navigate('/home');
         })
         .catch(error => {
           console.error('There was an error!', error);
@@ -44,11 +49,11 @@ const Register = () => {
 
   return (
     <div className="d-flex justify-content-center align-items-center vh-100">
-      <div className="card">
+      <div className="register-card">
         <div className='text-center'>
           <img src={Logo} alt="Logo" style={{width: '150px'}}/>
         </div>
-        <h3 className="mb-4 mt-4 register">Register</h3>
+        <h3 className="mb-4 mt-4 register-topic">Register</h3>
         <form onSubmit={handleSubmit}>
 
           <div className='row'>
@@ -139,8 +144,8 @@ const Register = () => {
           </div>
           <button type="submit" className="btn w-10">Create Account</button>
         </form>
-        <div className="text-center mt-3">
-          Already have an account? <a href="/login" className='login'>Login</a>
+        <div className="text-center mt-5 already">
+          Already have an account? <Link className='registr-login' to="/"><b>Login</b></Link>
         </div>
       </div>
     </div>
