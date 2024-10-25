@@ -84,6 +84,11 @@ input{
     color: gray;
 }
 
+.pass-info{
+    font-size: 12px;
+    color: #ff4f81;
+}
+
 .dont{
     font-size: 12px;
 }
@@ -150,10 +155,4 @@ input{
     color: gray;
     text-align: justify;
     font-size: 14px;
-}
-
-
-/* Favorite Page */
-.fav-topic{
-
 }

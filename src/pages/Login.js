@@ -43,8 +43,8 @@ const Login = () => {
             navigate('/home');
         })
         .catch(error => {
-            console.error('There was an error!', error.response.status);
-            if(error.response.status === 400){
+            console.error('There was an error!', error.response);
+            if(error.response){
                 setLoginError(true);
             }
         });
@@ -72,7 +72,7 @@ const Login = () => {
                                 onChange={handleChange}
                                 required 
                             />
-                            <label for="floatingInput" className='form-label'>Email Address</label>
+                            <label for="floatingInput" className='form-label'>Email Address *</label>
                         </div>
                     </div>
                 
@@ -88,7 +88,8 @@ const Login = () => {
                                 onChange={handleChange}
                                 required 
                             />
-                            <label for="floatingInput" className='form-label'>Password</label>
+                            <label for="floatingInput" className='form-label'>Password *</label>
+                            <p className='pass-info mt-1 mb-4'>Password must at least 6 characters long</p>
                         </div>
                     </div>
                     <button type="submit" className="btn w-100">SIGN IN</button>

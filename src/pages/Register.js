@@ -43,6 +43,7 @@ const Register = () => {
         })
         .catch(error => {
           console.error('There was an error!', error);
+          window.alert('There was an error! Please fill the form correctly');
         });
     }
   };
@@ -68,7 +69,7 @@ const Register = () => {
                 onChange={handleChange}
                 required 
               />
-              <label for="floatingInput" className='form-label'>First Name</label>
+              <label for="floatingInput" className='form-label'>First Name <span>*</span></label>
             </div>
             <div className="form-floating mb-3 col-md-6">
               <input 
@@ -87,7 +88,7 @@ const Register = () => {
           <div className='row'>
             <div className="form-floating mb-3 col-md-6">
               <input 
-                type="email" 
+                type="text" 
                 name="email" 
                 id="floatingInput"
                 className="form-control" 
@@ -96,7 +97,7 @@ const Register = () => {
                 onChange={handleChange}
                 required 
               />
-              <label for="floatingInput" className='form-label'>Email</label>
+              <label for="floatingInput" className='form-label'>Email *</label>
             </div>
             <div className="form-floating mb-3 col-md-6">
               <input 
@@ -109,7 +110,7 @@ const Register = () => {
                 onChange={handleChange}
                 required 
               />
-              <label for="floatingInput" className='form-label'>Phone Number</label>
+              <label for="floatingInput" className='form-label'>Phone Number *</label>
             </div>
           </div>
 
@@ -125,7 +126,8 @@ const Register = () => {
                 onChange={handleChange}
                 required 
               />
-              <label for="floatingInput" className='form-label'>Password</label>
+              <label for="floatingInput" className='form-label'>Password *</label>
+              <p className='pass-info mt-1'>Password must at least 6 characters long</p>
             </div>
             <div className="form-floating mb-3 col-md-6">
               <input 
@@ -138,11 +140,11 @@ const Register = () => {
                 onChange={handleChange}
                 required 
               />
-              <label for="floatingInput" className='form-label'>Confirm Password</label>
+              <label for="floatingInput" className='form-label'>Confirm Password *</label>
               {passwordMatchError && <div className="invalid-feedback">The password does not match</div>}
             </div>
           </div>
-          <button type="submit" className="btn w-10">Create Account</button>
+          <button type="submit" className="btn w-10 mt-3">Create Account</button>
         </form>
         <div className="text-center mt-5 already">
           Already have an account? <Link className='registr-login' to="/"><b>Login</b></Link>
