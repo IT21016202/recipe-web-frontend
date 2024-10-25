@@ -43,7 +43,7 @@ const Register = () => {
         })
         .catch(error => {
           console.error('There was an error!', error);
-          window.alert('There was an error! Please fill the form correctly');
+          window.alert('Please fill the form correctly');
         });
     }
   };
