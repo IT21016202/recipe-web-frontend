@@ -63,7 +63,7 @@ const Login = () => {
                     <div className='row'>
                         <div className="form-floating mb-3">
                             <input 
-                                type="email" 
+                                type="email"
                                 name="email" 
                                 id="floatingInput"
                                 className="form-control" 
