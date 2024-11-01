@@ -51,7 +51,7 @@ const ItemCardView = () => {
             if (result.isConfirmed) {
                 const token = localStorage.getItem('recipe_token');
                 if (!token) {
-                    Swal.fire('', 'Please login to add to favourite', 'success');
+                    Swal.fire('', 'Please login to add to favourite', 'error');
                     return;
                 }
 
@@ -75,7 +75,7 @@ const ItemCardView = () => {
                 })
                 .catch(error => {
                     console.error('Error in adding to favourite', error);
-                    Swal.fire('', error.response.data.message, 'success');
+                    Swal.fire('', error.response.data.message, 'error');
                 });
             }
         });

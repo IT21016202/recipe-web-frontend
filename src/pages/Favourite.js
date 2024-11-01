@@ -52,7 +52,7 @@ const Favourite = () => {
             if (result.isConfirmed) {
                 const token = localStorage.getItem('recipe_token');
                 if (!token) {
-                    Swal.fire('', 'Please login to remove favourite', 'success');
+                    Swal.fire('', 'Please login to remove favourite', 'error');
                     return;
                 }
 
