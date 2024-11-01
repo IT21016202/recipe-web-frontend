@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 import ViewRecipeModal from './ViewRecipeModal';
 
 const ItemCardView = () => {
@@ -86,7 +87,7 @@ const ItemCardView = () => {
                                 <div className='card-body'>
                                     <div className='d-flex justify-content-between'>
                                         <p>{category}</p> 
-                                        <a href='#' onClick={() => addToFavourite({id: recipe.idMeal, name: recipe.strMeal, image: recipe.strMealThumb, category: category})}><FontAwesomeIcon icon={faHeart} style={{color: '#ff4f81'}}/></a>
+                                        <a href='#' onClick={() => addToFavourite({id: recipe.idMeal, name: recipe.strMeal, image: recipe.strMealThumb, category: category})}><FontAwesomeIcon icon={regularHeart} style={{color: '#ff4f81'}}/></a>
                                     </div>
                                     <a href='#' onClick={() => handleViewRevipe(recipe.idMeal)} className='recipe-card-a'>
                                         <h6 className='card-title'>{recipe.strMeal}</h6>
