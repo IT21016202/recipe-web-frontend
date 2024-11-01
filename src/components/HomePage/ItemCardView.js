@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'; 
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 import ViewRecipeModal from './ViewRecipeModal';
+import Swal from 'sweetalert2';
 
 const ItemCardView = () => {
     const location = useLocation();
@@ -40,38 +40,44 @@ const ItemCardView = () => {
     };
 
     const addToFavourite = (recipeData) => {
-        const res = window.confirm('Are you sure you want to add this recipe to your favourite?');
-        if (!res) {
-            return;
-        }
+        Swal.fire({
+            title: 'Add to favorite',
+            html: 'Are you sure you want to add this recipe to your favourite?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'Cancel',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const token = localStorage.getItem('recipe_token');
+                if (!token) {
+                    Swal.fire('', 'Please login to add to favourite', 'success');
+                    return;
+                }
 
-        const token = localStorage.getItem('recipe_token');
-        if (!token) {
-            alert('Please login to add to favourite');
-            return;
-        }
+                const { id, name, image, category } = recipeData;
+                const favoriteRecipe = {
+                    recipeId: id,
+                    name : name,
+                    image: image,
+                    category: category
+                }
 
-        const { id, name, image, category } = recipeData;
-        const favoriteRecipe = {
-            recipeId: id,
-            name : name,
-            image: image,
-            category: category
-        }
-
-        axios.post(BASE_URL+'/api/recipes/favorites', favoriteRecipe, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
+                axios.post(BASE_URL+'/api/recipes/favorites', favoriteRecipe, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`,
+                    }
+                })
+                .then(response => {
+                    console.log(response);
+                    Swal.fire('', 'Recipe added to favourite successfully', 'success');
+                })
+                .catch(error => {
+                    console.error('Error in adding to favourite', error);
+                    Swal.fire('', error.response.data.message, 'success');
+                });
             }
-        })
-        .then(response => {
-            console.log(response);
-            alert('Recipe added to favourite successfully');
-        })
-        .catch(error => {
-            console.error('Error in adding to favourite', error);
-            alert(error.response.data.message);
         });
     }
     

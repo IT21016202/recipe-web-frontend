@@ -4,6 +4,7 @@ import axios from 'axios';
 import ViewRecipeModal from '../components/HomePage/ViewRecipeModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import Swal from 'sweetalert2';
 
 const Favourite = () => {
     const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -40,23 +41,35 @@ const Favourite = () => {
 
     // Remove recipe from favorite
     const removeFromFavourite = (recipeId) => {
-        const res = window.confirm('Are you sure you want to remove this recipe from your favourite?');
-        if (!res) {
-            return;
-        }
+        Swal.fire({
+            title: 'Remove from favorite',
+            html: 'Are you sure you want to remove this recipe from your favourite?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'Cancel',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const token = localStorage.getItem('recipe_token');
+                if (!token) {
+                    Swal.fire('', 'Please login to remove favourite', 'success');
+                    return;
+                }
 
-        axios.delete(BASE_URL+'/api/recipes/favorites/'+recipeId, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
+                axios.delete(BASE_URL+'/api/recipes/favorites/'+recipeId, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`,
+                    }
+                })
+                .then(response => {
+                    Swal.fire('', response.data.message, 'success');
+                    getFavorites();
+                })
+                .catch(error => {
+                    console.error('Error in removing from favorites', error);
+                });
             }
-        })
-        .then(response => {
-            alert(response.data.message);
-            getFavorites();
-        })
-        .catch(error => {
-            console.error('Error in removing from favorites', error);
         });
     }
 

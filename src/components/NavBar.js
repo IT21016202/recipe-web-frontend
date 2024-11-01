@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOut } from '@fortawesome/free-solid-svg-icons';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const NavBar = () => {
 
@@ -11,13 +12,20 @@ const NavBar = () => {
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        const res = window.confirm('Are you sure you want to logout?');
-        if (!res) {
-            return 
-        }
-        logout();
-        navigate('/');
-      };
+        Swal.fire({
+            title: 'Logout',
+            html: 'Are you sure you want to logout?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'Cancel',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                logout();
+                navigate('/');
+            }
+        });      
+    };
 
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -37,11 +45,11 @@ const NavBar = () => {
                             </li>
                         </ul>
                     </div>
-                    <form className="d-flex">
+                    <div className="d-flex">
                         <button className='btn-signout' onClick={() => handleLogout()}>
                             <FontAwesomeIcon icon={faSignOut}/>
                         </button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </nav>
